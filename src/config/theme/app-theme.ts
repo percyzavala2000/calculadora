@@ -16,6 +16,26 @@ import { StyleSheet } from 'react-native';
     backgroundColor:colors.background,
     flex:1
   },
+  calculatorContainer:{
+    flex:1,
+    paddingHorizontal:20,
+    justifyContent:'flex-end'
+  },
+  mainResult:{
+    fontSize:70,
+    color:colors.textPrymary,
+    textAlign:'right',
+    marginBottom:10,
+    fontWeight:'400'
+
+  },
+  subResult:{
+    fontSize:40,
+    color:colors.textSecondary,
+    textAlign:'right',
+    marginBottom:10,
+    fontWeight:'300'
+  },
 
   
 
