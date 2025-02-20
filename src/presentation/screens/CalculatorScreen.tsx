@@ -6,7 +6,7 @@ import { useCalculator } from '../hooks/useCalculator';
 
 
 export const CalculatorScreen = () => {
- const{number,buildNumber}= useCalculator();
+ const{number,buildNumber,clear,deleteOperation,togglePositiveNegative}= useCalculator();
   // render
   return (
     <View style={globalStyles.calculatorContainer}>
@@ -15,9 +15,9 @@ export const CalculatorScreen = () => {
         <Text style={globalStyles.subResult}>15</Text>
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton onPress={()=>console.log("C")} label="C" color={colors.lightGray} blackText={true} />
-        <CalculatorButton onPress={()=>console.log("+/-")} label="+/- " color={colors.lightGray} blackText={true} />
-        <CalculatorButton onPress={()=>console.log("%")} label=" %" color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>clear()} label="C" color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>togglePositiveNegative()} label="+/- " color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>deleteOperation()} label=" del" color={colors.lightGray} blackText={true} />
         <CalculatorButton onPress={()=>console.log("/")} label=" /" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>

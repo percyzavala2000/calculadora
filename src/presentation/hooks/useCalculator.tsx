@@ -4,6 +4,25 @@ import {View, Text} from 'react-native';
 export const useCalculator = () => {
   const [number, setNumber] = useState('0');
 
+  const clear = () => {
+    setNumber('0');
+  };
+  const deleteOperation = () => {
+    if (number.length === 1) {
+      setNumber('0');
+    } else {
+      setNumber(number.slice(0, -1));
+    }
+  };
+
+  const togglePositiveNegative = () => {
+    if (number.includes('-')) {
+      setNumber(number.replace('-', ''));
+    } else {
+      setNumber('-' + number);
+    }
+  };
+
   const buildNumber = (numberString: string) => {
     if (number.includes('.') && numberString === '.') return;
 
@@ -36,8 +55,12 @@ export const useCalculator = () => {
   return {
     //properties
     number,
+    
 
     //methods
     buildNumber,
+    deleteOperation,
+    clear,
+    togglePositiveNegative,
   };
 };
