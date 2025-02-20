@@ -7,14 +7,15 @@ type CalculatorButtonProps = {
   color?:string,
   doubleSize?:boolean,
   blackText?:boolean
+  onPress:()=>void
 };
 
 
-const CalculatorButton = ({ label,color=colors.darkGray,doubleSize=false,blackText=false}:CalculatorButtonProps) => {
+const CalculatorButton = ({ label,color=colors.darkGray,doubleSize=false,blackText=false,onPress}:CalculatorButtonProps) => {
 
   // render
   return (
-    <Pressable style={({pressed})=>({...globalStyles.button,backgroundColor:color,opacity:(pressed)?0.8:1,width:(doubleSize)?180:80})}>
+    <Pressable onPress={()=>onPress()} style={({pressed})=>({...globalStyles.button,backgroundColor:color,opacity:(pressed)?0.8:1,width:(doubleSize)?180:80})} >
       <Text style={{...globalStyles.buttonText,color:blackText?"black":"white"}}>{label}</Text>
     </Pressable>
   );

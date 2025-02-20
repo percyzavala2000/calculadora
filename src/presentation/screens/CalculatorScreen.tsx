@@ -1,44 +1,47 @@
 import React from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text} from 'react-native';
 import {colors, globalStyles} from '../../config/theme/app-theme';
 import CalculatorButton from '../components/CalculatorButton';
+import { useCalculator } from '../hooks/useCalculator';
+
 
 export const CalculatorScreen = () => {
+ const{number,buildNumber}= useCalculator();
   // render
   return (
     <View style={globalStyles.calculatorContainer}>
       <View style={{paddingHorizontal: 20, paddingBottom: 20}}>
-        <Text style={globalStyles.mainResult}>1500</Text>
+        <Text adjustsFontSizeToFit numberOfLines={1} style={globalStyles.mainResult}>{number}</Text>
         <Text style={globalStyles.subResult}>15</Text>
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton label="C " color={colors.lightGray} blackText={true} />
-        <CalculatorButton label="+/- " color={colors.lightGray} blackText={true} />
-        <CalculatorButton label=" %" color={colors.lightGray} blackText={true} />
-        <CalculatorButton label=" /" color={colors.orange} />
+        <CalculatorButton onPress={()=>console.log("C")} label="C" color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>console.log("+/-")} label="+/- " color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>console.log("%")} label=" %" color={colors.lightGray} blackText={true} />
+        <CalculatorButton onPress={()=>console.log("/")} label=" /" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton label="7 " color={colors.darkGray} />
-        <CalculatorButton label="8" color={colors.darkGray} />
-        <CalculatorButton label="9" color={colors.darkGray} />
-        <CalculatorButton label="X" color={colors.orange} />
+        <CalculatorButton onPress={()=>buildNumber("7")} label="7" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("8")} label="8" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("9")} label="9" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>console.log("X")} label="X" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton label="4" color={colors.darkGray} />
-        <CalculatorButton label="5" color={colors.darkGray} />
-        <CalculatorButton label="6" color={colors.darkGray} />
-        <CalculatorButton label="-" color={colors.orange} />
+        <CalculatorButton onPress={()=>buildNumber("4")} label="4" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("5")} label="5" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("6")} label="6" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>console.log("-")} label="-" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton label="1 " color={colors.darkGray} />
-        <CalculatorButton label="2" color={colors.darkGray} />
-        <CalculatorButton label="3" color={colors.darkGray} />
-        <CalculatorButton label="+" color={colors.orange} />
+        <CalculatorButton onPress={()=>buildNumber("1 ")} label="1" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("2 ")} label="2" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber("3 ")} label="3" color={colors.darkGray} />
+        <CalculatorButton onPress={()=>console.log("+ ")} label="+" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton label="0 " color={colors.darkGray} doubleSize={true} />
-        <CalculatorButton label="." color={colors.darkGray} />
-        <CalculatorButton label="=" color={colors.orange} />
+        <CalculatorButton onPress={()=>buildNumber("0")} label="0" color={colors.darkGray} doubleSize={true} />
+        <CalculatorButton onPress={()=>buildNumber(".")} label="." color={colors.darkGray} />
+        <CalculatorButton onPress={()=>console.log("=")} label="=" color={colors.orange} />
       </View>
     </View>
   );
