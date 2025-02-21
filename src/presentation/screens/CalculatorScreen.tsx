@@ -6,13 +6,16 @@ import { useCalculator } from '../hooks/useCalculator';
 
 
 export const CalculatorScreen = () => {
- const{number,prevNumber,buildNumber,clear,deleteOperation,togglePositiveNegative,addOperation,divideOperation,multiplyOperation,substractOperation,calculateResult}= useCalculator();
+ const{number,formula,prevNumber,buildNumber,clear,deleteOperation,togglePositiveNegative,addOperation,divideOperation,multiplyOperation,substractOperation,calculateResult}= useCalculator();
   // render
   return (
     <View style={globalStyles.calculatorContainer}>
       <View style={{paddingHorizontal: 20, paddingBottom: 20}}>
-        <Text adjustsFontSizeToFit numberOfLines={1} style={globalStyles.mainResult}>{number}</Text>
-        <Text adjustsFontSizeToFit numberOfLines={1} style={globalStyles.subResult}>{ (prevNumber==='0')?'': prevNumber}</Text>
+        <Text adjustsFontSizeToFit numberOfLines={1} style={globalStyles.mainResult}>{formula}</Text>
+
+        {(formula===prevNumber)?<Text style={globalStyles.subResult} ></Text>: 
+        <Text adjustsFontSizeToFit numberOfLines={1} style={globalStyles.subResult}>{ prevNumber}</Text>
+        }
       </View>
       <View style={globalStyles.row}>
         <CalculatorButton onPress={clear} label="C" color={colors.lightGray} blackText={true} />
@@ -24,7 +27,7 @@ export const CalculatorScreen = () => {
         <CalculatorButton onPress={()=>buildNumber('7')} label="7" color={colors.darkGray} />
         <CalculatorButton onPress={()=>buildNumber('8')} label="8" color={colors.darkGray} />
         <CalculatorButton onPress={()=>buildNumber('9')} label="9" color={colors.darkGray} />
-        <CalculatorButton onPress={multiplyOperation} label="X" color={colors.orange} />
+        <CalculatorButton onPress={multiplyOperation} label="x" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
         <CalculatorButton onPress={()=>buildNumber('4')} label="4" color={colors.darkGray} />
@@ -39,8 +42,8 @@ export const CalculatorScreen = () => {
         <CalculatorButton onPress={addOperation} label="+" color={colors.orange} />
       </View>
       <View style={globalStyles.row}>
-        <CalculatorButton onPress={()=>buildNumber("0")} label="0" color={colors.darkGray} doubleSize={true} />
-        <CalculatorButton onPress={()=>buildNumber(".")} label="." color={colors.darkGray} />
+        <CalculatorButton onPress={()=>buildNumber('0')} label="0" color={colors.darkGray} doubleSize={true} />
+        <CalculatorButton onPress={()=>buildNumber('.')} label="." color={colors.darkGray} />
         <CalculatorButton onPress={calculateResult} label="=" color={colors.orange} />
       </View>
     </View>
