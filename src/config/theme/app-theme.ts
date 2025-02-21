@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 
  export const colors={
@@ -19,6 +19,7 @@ import { StyleSheet } from 'react-native';
   calculatorContainer:{
     flex:1,
     paddingHorizontal:20,
+
     justifyContent:'flex-end'
   },
   mainResult:{
@@ -39,8 +40,9 @@ import { StyleSheet } from 'react-native';
   row:{
     flexDirection:'row',
     justifyContent:'center',
-    marginBottom:18,
+    marginBottom:Platform.OS==='ios'?5:18,
     paddingHorizontal:10,
+    
   },
   button:{
     height:80,

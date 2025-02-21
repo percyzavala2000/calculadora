@@ -11,7 +11,7 @@ enum Operator {
 export const useCalculator = () => {
   const [number, setNumber] = useState('0');
   const [prevNumber, setPrevNumber] = useState('0');
-  const lastOperation = useRef<Operator>()
+  const lastOperation = useRef<Operator>();
 
   const clear = () => {
     setNumber('0');
@@ -65,7 +65,7 @@ export const useCalculator = () => {
   const setLastNumber = () => {
     if (number.endsWith('.')) {
       setPrevNumber(number.slice(0, -1));
-    }else{
+    } else {
       setPrevNumber(number);
     }
     setNumber('0');
@@ -73,19 +73,41 @@ export const useCalculator = () => {
 
   const divideOperation = () => {
     setLastNumber();
-    lastOperation.current=Operator.divide;
+    lastOperation.current = Operator.divide;
   };
   const multiplyOperation = () => {
     setLastNumber();
-    lastOperation.current=Operator.multiply;
+    lastOperation.current = Operator.multiply;
   };
   const addOperation = () => {
     setLastNumber();
-    lastOperation.current=Operator.add;
+    lastOperation.current = Operator.add;
   };
   const substractOperation = () => {
     setLastNumber();
-    lastOperation.current=Operator.substract;
+    lastOperation.current = Operator.substract;
+  };
+
+  const calculateResult = () => {
+    const num1 = Number(number);
+    const num2 = Number(prevNumber);
+    switch (lastOperation.current) {
+      case Operator.add:
+        setNumber(`${num1 + num2}`);
+        break;
+      case Operator.substract:
+        setNumber(`${num2 - num1}`);
+        break;
+      case Operator.multiply:
+        setNumber(`${num1 * num2}`);
+        break;
+      case Operator.divide:
+        setNumber(`${num2 / num1}`);
+        break;
+      default:
+        throw new Error('Error al calcular');
+    }
+    setPrevNumber('0');
   };
 
   // render
@@ -104,6 +126,6 @@ export const useCalculator = () => {
     multiplyOperation,
     addOperation,
     substractOperation,
-
+    calculateResult,
   };
 };
