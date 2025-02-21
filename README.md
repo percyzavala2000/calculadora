@@ -10,10 +10,10 @@ Este proyecto es una calculadora móvil desarrollada con React Native CLI. Permi
 - Historial de cálculos recientes (opcional)
 
 ## Tecnologías utilizadas
-- React Native CLI
+- React Native CLI v0.78.0
 - TypeScript 
 - React Hooks (useState, useEffect)
-- Styled Components o Tailwind CSS para estilos
+- Estilos con StyleSheet
 
 ## Instalación
 1. Clonar el repositorio:
@@ -22,7 +22,7 @@ Este proyecto es una calculadora móvil desarrollada con React Native CLI. Permi
    ```
 2. Entrar en el directorio del proyecto:
    ```sh
-   cd react-native-calculadora
+   cd calculadora
    ```
 3. Instalar las dependencias:
    ```sh
@@ -32,8 +32,9 @@ Este proyecto es una calculadora móvil desarrollada con React Native CLI. Permi
    ```
 4. Ejecutar la aplicación en un dispositivo o emulador:
    ```sh
-   npx react-native run-android # Para Android
-   npx react-native run-ios     # Para iOS (requiere macOS)
+   npm start                   # Inicia el servidor de desarrollo metro
+   npm run android  # Para Android
+   npm run ios     # Para iOS (requiere macOS)
    ```
 
 ## Uso
